@@ -59,8 +59,17 @@ void bubble_sort(int a[], int n, long long &comparisions)
 }
 
 // Shell Sort
-void shell_sort(int a[], int n, long long &comparisions)
-{
+void shell_sort(int arr[], int n,long long& comparisions) {
+    for (int gap = n / 2; ++comparisions && gap > 0; gap /= 2) {
+        for (int i = gap; ++comparisions && i < n; i++) {
+            int temp = arr[i];
+            int j;
+            for (j = i; ++comparisions && j >= gap && ++comparisions && arr[j - gap] > temp; j -= gap) {
+                arr[j] = arr[j - gap];
+            }
+            arr[j] = temp;
+        }
+    }
 }
 
 // Heap Sort
@@ -169,7 +178,8 @@ int partition(int a[], int left, int right, long long &comparisions)
 
 void quickSort(int a[], int left, int right, long long &comparisions)
 {
-    if (++comparisions && left >= right) return;
+    if (++comparisions && left >= right)
+        return;
     int pi = partition(a, left, right, comparisions);
     quickSort(a, left, pi - 1, comparisions);
     quickSort(a, pi + 1, right, comparisions);
@@ -198,5 +208,29 @@ void flash_sort(int a[], int n, long long &comparisions)
 // Shaker Sort
 void shaker_sort(int a[], int n, long long &comparisions)
 {
-    
+    int Left = 0;
+    int Right = n - 1;
+    int k = 0;
+    int i;
+    while (++comparisions && Left < Right)
+    {
+        for (i = Left; ++comparisions && i < Right; i++)
+        {
+            if (++comparisions && a[i] > a[i + 1])
+            {
+                swap(a[i], a[i + 1]);
+                k = i;
+            }
+        }
+        Right = k;
+        for (i = Right; ++comparisions && i > Left; i--)
+        {
+            if (++comparisions && a[i] < a[i - 1])
+            {
+                swap(a[i], a[i - 1]);
+                k = i;
+            }
+        }
+        Left = k;
+    }
 }
