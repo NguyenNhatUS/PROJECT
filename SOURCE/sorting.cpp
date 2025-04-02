@@ -1,6 +1,8 @@
 // trình bày các thuật toán sort ở đây
 #include<sorting.h>
 
+
+// Selection Sort
 void selection_sort(int a[],int n,long long& comparisions) {
     for(int i = 0;++comparisions && i < n - 1;i++) {
         int index = i;
@@ -14,6 +16,7 @@ void selection_sort(int a[],int n,long long& comparisions) {
     }
 }
 
+// Insertion Sort
 void insertion_sort(int a[],int n,long long& comparisions) {
     for(int i = 1;++comparisions && i < n;i++) {
         int j = i - 1;
@@ -26,47 +29,76 @@ void insertion_sort(int a[],int n,long long& comparisions) {
     }
 }
 
-// 3
+// Bubble Sort
 void bubble_sort(int a[],int n,long long& comparisions) {
 
 }
 
-// 4
+// Shell Sort
 void shell_sort(int a[],int n,long long& comparisions) {
 
 }
 
-// 5
+// Heap Sort
+
+void heapify(int a[],int n,int i,long long& comparisions) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+    // ++comparisions
+    if(++comparisions && left < n && ++comparisions && a[left] > a[largest]) {
+        largest = left;
+    }
+    if(++comparisions && right < n && ++comparisions && a[right] > a[largest]) {
+        largest = right;
+    }   
+    if(++comparisions && largest != i) {
+        swap(a[largest],a[i]);
+        heapify(a,n,largest,comparisions);
+    }
+}
+
 void heap_sort(int a[],int n,long long& comparisions) {
+    for(int i = n / 2 - 1;++comparisions && i >= 0;i--) {
+        heapify(a,n,i,comparisions);
+    }
+    for(int i = n - 1;++comparisions && i > 0;i--) {
+        swap(a[i],a[0]);
+        heapify(a,i,0,comparisions);
+    }
+}
+
+// Merge Sort
+
+void merge(int a[],int left,int mid,int right,long long &comparisions) {
     
 }
 
-// 6
 void merge_sort(int a[],int n,long long& comparisions) {
     
 }
 
-// 7
+// Quick Sort
 void quick_sort(int a[],int n,long long& comparisions) {
     
 }
 
-// 8
+// Counting Sort
 void counting_sort(int a[],int n,long long& comparisions) {
     
 }
 
-// 9
+// Radix Sort
 void radix_sort(int a[],int n,long long& comparisions) {
     
 }
 
-// 10
+// Flash Sort
 void flash_sort(int a[],int n,long long& comparisions) {
     
 }
 
-// 11
+// Shaker Sort
 void shaker_sort(int a[],int n,long long& comparisions) {
     
 }
