@@ -1,6 +1,5 @@
 // trình bày các thuật toán sort ở đây
 #include <sorting.h>
-#include <bits/stdc++.h>
 using namespace std;
 
 // Selection Sort
