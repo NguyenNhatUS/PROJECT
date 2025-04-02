@@ -9,6 +9,13 @@
 
 using namespace std;
 
+// Swap
+void Swap(int &a,int &b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
+}
+
 // Sort Algorithm
 // 1
 void selection_sort(int a[],int n,long long& comparisions);
