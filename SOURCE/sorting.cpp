@@ -7,8 +7,7 @@ void Swap(int &a,int &b) {
     a = b;
     b = tmp;
 }
-
-
+ 
 // Selection Sort
 void selection_sort(int a[],int n,long long& comparisions) {
     for(int i = 0;++comparisions && i < n - 1;i++) {
