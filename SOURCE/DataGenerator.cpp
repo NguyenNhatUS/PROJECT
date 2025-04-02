@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿
+#include <iostream>
 #include <fstream>
 #include <cmath>
 #include <time.h>
