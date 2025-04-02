@@ -2,13 +2,7 @@
 // #include <sorting.h>
 #include<bits/stdc++.h>
 using namespace std;
-// Swap function
-void Swap(int &a, int &b)
-{
-    int tmp = a;
-    a = b;
-    b = tmp;
-}
+
 
 // Selection Sort
 void selection_sort(int a[], int n, long long &comparisions)
@@ -117,12 +111,31 @@ void merge_sort(int a[], int n, long long &comparisions)
 }
 
 // Quick Sort
-int partition(int a[], int left, int rigth, long long &comparisions)
+int partition(int a[], int left, int right, long long &comparisions)
 {
+    int pivot = a[right];
+    int i = left - 1;
+    for(int j = left;++comparisions && j < right;j++) {
+        if(++comparisions && a[j] < pivot) {
+            i++;
+            swap(a[i],a[j]);
+        }
+    }
+    i++;
+    swap(a[i],a[right]);
+    return i;
+}
+
+void quickSort(int a[],int left,int right,long long & comparisions) {
+    if(++comparisions && left >= right) return;
+    int pi = partition(a,left,right,comparisions);
+    quickSort(a,left,pi - 1,comparisions);
+    quickSort(a,pi + 1,right,comparisions);
 }
 
 void quick_sort(int a[], int n, long long &comparisions)
 {
+    quickSort(a,0,n - 1,comparisions);
 }
 
 // Counting Sort

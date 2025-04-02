@@ -9,9 +9,6 @@
 
 using namespace std;
 
-// Swap function
-void Swap(int &a,int &b);
-
 // Sort Algorithm
 // 1
 void selection_sort(int a[],int n,long long& comparisions);
