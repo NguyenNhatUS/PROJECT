@@ -230,7 +230,6 @@ void counting_sort(int a[], int n, long long &comparisions)
     CountingSort(a, n, min, max, comparisions);
 }
 
-// Radix Sort
 void Counting_Sort(int a[], int n, int exp, long long &comparisions)
 {
     int output[n];
@@ -254,6 +253,8 @@ void Counting_Sort(int a[], int n, int exp, long long &comparisions)
         a[i] = output[i];
     }
 }
+
+// Radix Sort
 
 void solve(int a[], int n, long long &comparisions)
 {
