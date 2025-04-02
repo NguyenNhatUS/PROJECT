@@ -37,7 +37,19 @@ void insertion_sort(int a[],int n,long long& comparisions) {
 
 // Bubble Sort
 void bubble_sort(int a[],int n,long long& comparisions) {
-
+    bool swap=true;
+	int temp;
+	for(int i=0;++comparisions&&swap;i++){
+		swap=false;
+		for(int j=0;++comparisions&&j<n-1;j++){
+			if(++comparisions&&a[j]>a[j+1]){
+				temp=a[j];
+				a[j]=a[j+1];
+				a[j+1]=temp;
+				swap=true;	
+			}
+		}
+	}
 }
 
 // Shell Sort
