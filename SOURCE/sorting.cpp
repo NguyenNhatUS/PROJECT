@@ -58,12 +58,16 @@ void bubble_sort(int a[], int n, long long &comparisions)
 }
 
 // Shell Sort
-void shell_sort(int arr[], int n,long long& comparisions) {
-    for (int gap = n / 2; ++comparisions && gap > 0; gap /= 2) {
-        for (int i = gap; ++comparisions && i < n; i++) {
+void shell_sort(int arr[], int n, long long &comparisions)
+{
+    for (int gap = n / 2; ++comparisions && gap > 0; gap /= 2)
+    {
+        for (int i = gap; ++comparisions && i < n; i++)
+        {
             int temp = arr[i];
             int j;
-            for (j = i; ++comparisions && j >= gap && ++comparisions && arr[j - gap] > temp; j -= gap) {
+            for (j = i; ++comparisions && j >= gap && ++comparisions && arr[j - gap] > temp; j -= gap)
+            {
                 arr[j] = arr[j - gap];
             }
             arr[j] = temp;
