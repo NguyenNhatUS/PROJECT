@@ -136,7 +136,8 @@ void merge(int a[], int left, int mid, int right, long long &comparisions)
 
 void MergeSort(int a[], int left, int right, long long &comparisions)
 {
-    if (++comparisions && right <= left) return;
+    if (++comparisions && right <= left)
+        return;
     int mid = left + (right - left) / 2;
     MergeSort(a, left, mid, comparisions);
     MergeSort(a, mid + 1, right, comparisions);
@@ -168,8 +169,7 @@ int partition(int a[], int left, int right, long long &comparisions)
 
 void quickSort(int a[], int left, int right, long long &comparisions)
 {
-    if (++comparisions && left >= right)
-        return;
+    if (++comparisions && left >= right) return;
     int pi = partition(a, left, right, comparisions);
     quickSort(a, left, pi - 1, comparisions);
     quickSort(a, pi + 1, right, comparisions);
@@ -198,4 +198,5 @@ void flash_sort(int a[], int n, long long &comparisions)
 // Shaker Sort
 void shaker_sort(int a[], int n, long long &comparisions)
 {
+    
 }
