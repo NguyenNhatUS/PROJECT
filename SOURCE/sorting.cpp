@@ -1,5 +1,5 @@
 // trình bày các thuật toán sort ở đây
-// #include <sorting.h>
+#include <sorting.h>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -208,13 +208,13 @@ void flash_sort(int a[], int n, long long &comparisions)
 // Shaker Sort
 void shaker_sort(int a[], int n, long long &comparisions)
 {
-    int Left = 0;
-    int Right = n - 1;
+    int left = 0;
+    int right = n - 1;
     int k = 0;
     int i;
-    while (++comparisions && Left < Right)
+    while (++comparisions && left < right)
     {
-        for (i = Left; ++comparisions && i < Right; i++)
+        for (i = left; ++comparisions && i < right; i++)
         {
             if (++comparisions && a[i] > a[i + 1])
             {
@@ -222,8 +222,8 @@ void shaker_sort(int a[], int n, long long &comparisions)
                 k = i;
             }
         }
-        Right = k;
-        for (i = Right; ++comparisions && i > Left; i--)
+        right = k;
+        for (i = right; ++comparisions && i > left; i--)
         {
             if (++comparisions && a[i] < a[i - 1])
             {
@@ -231,6 +231,6 @@ void shaker_sort(int a[], int n, long long &comparisions)
                 k = i;
             }
         }
-        Left = k;
+        left = k;
     }
 }
