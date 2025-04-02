@@ -36,7 +36,7 @@ void GenerateReverseData(int a[], int n ) {
 }
 
 // Hàm phát sinh mảng dữ liệu gần như có thứ tự
-void GenerateNearlySortedData(int a[], int n){
+void GenerateNearlySortedData(int a[], int n) {
 	for (int i = 0; i < n; i++) {
 		a[i] = i;
 	}
