@@ -191,14 +191,103 @@ void quick_sort(int a[], int n, long long &comparisions)
 }
 
 // Counting Sort
+void CountingSort(int arr[], int n, int mi, int mx,long long& comparisions){
+	int d=0,cs=mx-mi; 
+    int count[cs+1]; 
+	for(int i=0;++comparisions&&i<=cs;i++)
+	{
+		count[i]=0; 		
+	}	
+	for(int i=0;++comparisions&&i<n;i++) 
+	{
+		count[arr[i]-mi]++;
+	}
+	for(int i=0;++comparisions&&i<=cs;i++)
+	{
+		if(++comparisions&&count[i]>0) 
+		{
+			for(int j=1;++comparisions&&j<=count[i];j++)
+			{
+				arr[d++]=i+mi; 
+			}
+		}
+	}
+}
 void counting_sort(int a[], int n, long long &comparisions)
 {
+    int min=a[0],max=a[0];
+	for(int i=1;++comparisions&&i<n;i++)
+	{
+		if(++comparisions&&min>a[i]) min=a[i];
+		if(++comparisions&&max<a[i]) max=a[i];
+	}
+	CountingSort(a,n,min,max,comparisions);
 }
 
 // Radix Sort
-void radix_sort(int a[], int n, long long &comparisions)
-{
+void Counting_Sort(int a[],int n,int exp,long long& comparisions){
+	int output[n];
+	int count[10]={0};
+	for(int i=0;++comparisions&&i<n;i++)
+	{
+		count[(a[i]/exp)%10]++;	
+	}
+	for(int i=1;++comparisions&&i<10;i++)
+	{
+		count[i]+=count[i-1];
+	}
+	for(int i=n-1;++comparisions&&i>=0;i--)
+	{
+		int digit=(a[i]/exp)%10;
+		output[count[digit]-1]=a[i];
+		count[digit]--;	
+	}
+	for(int i=0;++comparisions&&i<n;i++)
+	{
+		a[i]=output[i];	
+	}
 }
+
+void solve(int a[],int n,long long& comparisions){
+	int maxNum=a[0];
+	for(int i=1;++comparisions&&i<n;i++)
+	{
+		if(++comparisions&&maxNum<a[i]) maxNum=a[i];
+	}
+	for(int exp=1;++comparisions&&maxNum/exp>0;exp*=10)
+	{
+		Counting_Sort(a,n,exp,comparisions);
+	}
+}
+
+void radix_sort(int a[],int n,long long& comparisions){
+	int list1[n];
+	int list2[n];
+	int count1=0,count2=0;
+	for(int i=0;++comparisions&&i<n;i++)
+	{
+		if(++comparisions&&a[i]<0)
+		{
+			list2[count2++]=-a[i];
+		}
+		else
+		{
+			list1[count1++]=a[i];
+		}
+	}
+	solve(list1,count1,comparisions);
+	solve(list2,count2,comparisions);
+	for(int i=0;++comparisions&&i<count2;i++)
+	{
+		a[i]=-list2[count2-i-1];	
+	}
+	for(int i=0;++comparisions&&i<count1;i++)
+	{
+		a[i+count2]=list1[i];	
+	}
+}
+
+
 
 // Flash Sort
 void flash_sort(int a[], int n, long long &comparisions)
