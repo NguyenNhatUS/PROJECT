@@ -2,21 +2,28 @@
 #include<sorting.h>
 
 void selection_sort(int a[],int n,long long& comparisions) {
-    for(int i = 0;++ comparisions && i < n - 1;i++) {
+    for(int i = 0;++comparisions && i < n - 1;i++) {
         int index = i;
-        for(int j = i + 1;comparisions++ && j < n;j++) {
-            if(++comparisions && a[j] < a[index]) {
-                index = j;
+        for(int j = i + 1;++comparisions && j < n;j++) {
+            if(a[i] > a[j]) {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
             }
         }
-        int temp = a[i];
-        a[i] = a[index];
-        a[index] = temp;
     }
 }
 
 void insertion_sort(int a[],int n,long long& comparisions) {
-
+    for(int i = 1;++comparisions && i < n;i++) {
+        int j = i - 1;
+        int key = a[i];
+        while(++comparisions && j >= 0 && ++comparisions &&  a[j] > key) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
 }
 
 // 3
