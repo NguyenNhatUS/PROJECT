@@ -3,61 +3,69 @@
 using namespace std;
 
 // ++comparisions &&
-void flash_sort(int a[], int n, long long &comparisions)
+void Counting(int a[], int n, int exp, long long &comparisions)
 {
-    int __L[300000];
-    if (++comparisions && n <= 1)
-        return;
-    int m = n * 0.43;
-    if (++comparisions && m <= 2)
-        m = 2;
-    for (int i = 0; ++comparisions && i < m; i++)
-        __L[i] = 0;
-    int Mx = a[0], Mn = a[0];
+    int output[n];
+    int count[10] = {0};
+    for (int i = 0; ++comparisions && i < n; i++)
+    {
+        count[(a[i] / exp) % 10]++;
+    }
+    for (int i = 1; ++comparisions && i < 10; i++)
+    {
+        count[i] += count[i - 1];
+    }
+    for (int i = n - 1; ++comparisions && i >= 0; i--)
+    {
+        int digit = (a[i] / exp) % 10;
+        output[count[digit] - 1] = a[i];
+        count[digit]--;
+    }
+    for (int i = 0; ++comparisions && i < n; i++)
+    {
+        a[i] = output[i];
+    }
+}
+
+void solve(int a[], int n, long long &comparisions)
+{
+    int maxNum = a[0];
     for (int i = 1; ++comparisions && i < n; i++)
     {
-        if (++comparisions && Mx < a[i])
-            Mx = a[i];
-        if (++comparisions && Mn > a[i])
-            Mn = a[i];
+        if (++comparisions && maxNum < a[i])
+            maxNum = a[i];
     }
-    if (++comparisions && Mx == Mn)
-        return;
-#define getK(x) 1ll * (m - 1) * (x - Mn) / (Mx - Mn)
-    for (int i = 0; ++comparisions && i < n; i++)
-        ++__L[getK(a[i])];
-    for (int i = 1; ++comparisions && i < m; i++)
-        __L[i] += __L[i - 1];
-    int count = 0;
-    int i = 0;
-    while (++comparisions && count < n)
+    for (int exp = 1; ++comparisions && maxNum / exp > 0; exp *= 10)
     {
-        int k = getK(a[i]);
-        while (++comparisions && i >= __L[k])
-            k = getK(a[++i]);
-        int z = a[i];
-        while (++comparisions && i != __L[k])
+        Counting(a, n, exp, comparisions);
+    }
+}
+
+void radix_sort(int a[], int n, long long &comparisions)
+{
+    int list1[n];
+    int list2[n];
+    int count1 = 0, count2 = 0;
+    for (int i = 0; ++comparisions && i < n; i++)
+    {
+        if (++comparisions && a[i] < 0)
         {
-            k = getK(z);
-            int y = a[__L[k] - 1];
-            a[--__L[k]] = z;
-            z = y;
-            count++;
+            list2[count2++] = -a[i];
+        }
+        else
+        {
+            list1[count1++] = a[i];
         }
     }
-    for (int k = 1; ++comparisions && k < m; k++)
+    solve(list1, count1, comparisions);
+    solve(list2, count2, comparisions);
+    for (int i = 0; ++comparisions && i < count2; i++)
     {
-        for (int i = __L[k] - 2; ++comparisions && i >= __L[k - 1]; i--)
-            if (++comparisions && a[i] > a[i + 1])
-            {
-                int t = a[i], j = i;
-                while (++comparisions && t > a[j + 1])
-                {
-                    a[j] = a[j + 1];
-                    j++;
-                }
-                a[j] = t;
-            }
+        a[i] = -list2[count2 - i - 1];
+    }
+    for (int i = 0; ++comparisions && i < count1; i++)
+    {
+        a[i + count2] = list1[i];
     }
 }
 
@@ -67,7 +75,7 @@ int main()
     int a[] = {5, 34, 23, 2, 4, 6, 7, 8, 8};
     int n = sizeof(a) / sizeof(a[0]);
     long long comparisions = 0;
-     flash_sort(a, n, comparisions);
+    radix_sort(a, n, comparisions);
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << " ";
