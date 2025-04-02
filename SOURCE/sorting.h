@@ -32,6 +32,5 @@ void GenerateReverseData(int a[], int n );
 void GenerateNearlySortedData(int a[], int n);
 void GenerateData(int a[], int n, int dataType);
 
-
 //Processing commandline args
 void processArg(int argc, char* argv[]);
