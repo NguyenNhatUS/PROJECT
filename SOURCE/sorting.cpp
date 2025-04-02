@@ -1,6 +1,13 @@
 // trình bày các thuật toán sort ở đây
 #include<sorting.h>
 
+// Swap function
+void Swap(int &a,int &b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
+}
+
 
 // Selection Sort
 void selection_sort(int a[],int n,long long& comparisions) {
@@ -71,7 +78,7 @@ void heap_sort(int a[],int n,long long& comparisions) {
 // Merge Sort
 
 void merge(int a[],int left,int mid,int right,long long &comparisions) {
-    
+
 }
 
 void merge_sort(int a[],int n,long long& comparisions) {

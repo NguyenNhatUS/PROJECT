@@ -9,12 +9,8 @@
 
 using namespace std;
 
-// Swap
-void Swap(int &a,int &b) {
-    int tmp = a;
-    a = b;
-    b = tmp;
-}
+// Swap function
+void Swap(int &a,int &b);
 
 // Sort Algorithm
 // 1
