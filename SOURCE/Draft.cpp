@@ -3,46 +3,59 @@
 using namespace std;
 
 
-void heapify(int a[], int n, int i, long long &comparisions)
+void merge(int a[], int left, int mid, int right, long long &comparisions)
 {
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
-    // ++comparisions
-    if (++comparisions && left < n && ++comparisions && a[left] > a[largest])
+    if (++comparisions && left >= right)
+        return;
+    int *temp = new int[right - left + 1];
+    int i = left, j = mid + 1, count = 0;
+    while (++comparisions && i <= mid && ++comparisions && j <= right)
     {
-        largest = left;
+        if (++comparisions && a[i] < a[j])
+        {
+            temp[count++] = a[i];
+            i++;
+        }
+        else
+        {
+            temp[count++] = a[j];
+            j++;
+        }
     }
-    if (++comparisions && right < n && ++comparisions && a[right] > a[largest])
+    while (++comparisions && i <= mid)
     {
-        largest = right;
+        temp[count++] = a[i++];
     }
-    if (++comparisions && largest != i)
+    while (++comparisions && j <= right)
     {
-        swap(a[largest], a[i]);
-        heapify(a, n, largest, comparisions);
+        temp[count++] = a[j++];
     }
+    for (int o = 0; ++comparisions && o < count; o++)
+    {
+        a[left + o] = temp[o];
+    }
+    delete[] temp;
 }
 
-void heap_sort(int a[], int n, long long &comparisions)
+void MergeSort(int a[], int left, int right, long long &comparisions)
 {
-    for (int i = n / 2 - 1; ++comparisions && i >= 0; i--)
-    {
-        heapify(a, n, i, comparisions);
-    }
-    for (int i = n - 1; ++comparisions && i > 0; i--)
-    {
-        swap(a[i], a[0]);
-        heapify(a, i, 0, comparisions);
-    }
+    if (++comparisions && right <= left) return;
+    int mid = left + (right - left) / 2;
+    MergeSort(a, left, mid, comparisions);
+    MergeSort(a, mid + 1, right, comparisions);
+    merge(a, left, mid, right, comparisions);
 }
 
+void merge_sort(int a[], int n, long long &comparisions)
+{
+    MergeSort(a, 0, n - 1, comparisions);
+}
 
 int main() {
     int a[] = {5,34,23,2,4,6,7,8,8};
     int n = sizeof(a) / sizeof(a[0]);
     long long comparisions = 0;
-    heap_sort(a,n,comparisions);
+    merge_sort(a,n,comparisions);
     for(int i = 0;i < n;i++) {
         cout << a[i] << " ";
     }
