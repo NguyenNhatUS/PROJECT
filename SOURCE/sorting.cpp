@@ -85,6 +85,10 @@ void merge_sort(int a[],int n,long long& comparisions) {
 }
 
 // Quick Sort
+int partition(int a[],int left,int rigth,long long& comparisions) {
+    
+}
+
 void quick_sort(int a[],int n,long long& comparisions) {
     
 }
