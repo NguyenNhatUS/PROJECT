@@ -3,14 +3,26 @@
 using namespace std;
 
 // Selection Sort
+
+// Original Function
+void selection_sort(int a[],int n) {
+    for(int i = 0;i < n - 1;i++) {
+        for(int j = i + 1;j < n;j++) {
+            if(a[i] > a[j]) {
+                swap(a[i],a[j]);
+            }
+        }
+    }
+}
+
+// Funtion with comparision counter
 void selection_sort(int a[], int n, long long &comparisions)
 {
     for (int i = 0; ++comparisions && i < n - 1; i++)
     {
-        int index = i;
         for (int j = i + 1; ++comparisions && j < n; j++)
         {
-            if (a[i] > a[j])
+            if (++comparisions && a[i] > a[j])
             {
                 int temp = a[i];
                 a[i] = a[j];
@@ -19,6 +31,9 @@ void selection_sort(int a[], int n, long long &comparisions)
         }
     }
 }
+
+
+
 
 // Insertion Sort
 void insertion_sort(int a[], int n, long long &comparisions)
