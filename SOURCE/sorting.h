@@ -22,15 +22,14 @@ struct Record {
 void selection_sort(int a[], int n);
 void insertion_sort(int a[], int n);
 void bubble_sort(int a[], int n);
-void shaker_sort(int a[], int n);
 void shell_sort(int a[], int n);
 void heap_sort(int a[], int n);
-void merge_sort(int a[], int n);
-void quick_sort(int a[], int n);
+void merge_sort(int a[],int n);
+void quick_sort(int a[],int n);
 void counting_sort(int a[], int n);
 void radix_sort(int a[], int n);
 void flash_sort(int a[], int n);
-
+void shaker_sort(int a[], int n);
 
 // Sort Algorithm with Comparision counter
 void selection_sort(int a[],int n,long long& comparisions);
@@ -53,4 +52,4 @@ void GenerateNearlySortedData(int a[], int n);
 void GenerateData(int a[], int n, int dataType);
 
 //Processing commandline args
-void processArg(int argc, char* argv[]);
+void processArg(int argc, char* argv[]); 
