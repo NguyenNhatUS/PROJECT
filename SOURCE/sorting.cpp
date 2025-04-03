@@ -3,13 +3,22 @@
 using namespace std;
 
 // Selection Sort
-
 // Original Function
-void selection_sort(int a[],int n) {
-    for(int i = 0;i < n - 1;i++) {
-        for(int j = i + 1;j < n;j++) {
-            if(a[i] > a[j]) {
-                swap(a[i],a[j]);
+
+
+
+
+
+
+void selection_sort(int a[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[i] > a[j])
+            {
+                swap(a[i], a[j]);
             }
         }
     }
@@ -31,9 +40,6 @@ void selection_sort(int a[], int n, long long &comparisions)
         }
     }
 }
-
-
-
 
 // Insertion Sort
 void insertion_sort(int a[], int n, long long &comparisions)
@@ -91,7 +97,6 @@ void shell_sort(int arr[], int n, long long &comparisions)
 }
 
 // Heap Sort
-
 void heapify(int a[], int n, int i, long long &comparisions)
 {
     int largest = i;

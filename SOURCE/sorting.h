@@ -12,6 +12,11 @@
 using namespace std;
 
 
+struct Record {
+    long long comparision;
+    double time;
+};
+
 // Sort Algorithm
 void selection_sort(int a[],int n,long long& comparisions);
 void insertion_sort(int a[],int n,long long& comparisions);
