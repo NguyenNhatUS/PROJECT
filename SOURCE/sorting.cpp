@@ -15,6 +15,7 @@ struct Record
     double time;
 };
 
+// hàm để tính toán running time và số lượng phép so sánh
 Record getRecord(int a[], int n, void (*sortFunctionCmp)(int[], int, long long &), void (*sortFunction)(int[], int))
 {
     Record record;
@@ -22,18 +23,18 @@ Record getRecord(int a[], int n, void (*sortFunctionCmp)(int[], int, long long &
     record.time = 0;
     int *b = new int[n];
     copyArray(a, b, n);
-    sortFunctionCmp(a, n, record.comparision);
-    auto start = high_resolution_clock::now();
+    sortFunctionCmp(a, n, record.comparision); // Đếm số phép so sánh
+    auto start = high_resolution_clock::now(); // Thời gian bắt đầu
     sortFunction(b, n);
-    auto end = high_resolution_clock::now();
-    duration<double, std::milli> duration = end - start;
-    record.time = duration.count();
+    auto end = high_resolution_clock::now();  // Thời gian kết thúc
+    duration<double, std::milli> duration = end - start; // Running time
+    record.time = duration.count();  // Gán record.time = running time
     delete[] b;
     return record;
 }
 
 // Selection Sort
-// Original Function
+// Original Functions
 void selection_sort(int a[], int n)
 {
     for (int i = 0; i < n - 1; i++)
