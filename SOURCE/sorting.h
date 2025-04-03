@@ -1,3 +1,6 @@
+#ifndef SORTING_H
+#define SORTING_H
+
 #include<iostream>
 #include<stdio.h>
 #include<vector>
@@ -17,6 +20,8 @@ struct Record {
     long long comparision;
     double time;
 };
+
+
 
 // Original functions
 void selection_sort(int a[], int n);
@@ -53,3 +58,5 @@ void GenerateData(int a[], int n, int dataType);
 
 //Processing commandline args
 void processArg(int argc, char* argv[]); 
+
+#endif

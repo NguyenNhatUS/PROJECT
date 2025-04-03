@@ -1,4 +1,4 @@
-#include<sorting.h>
+#include "sorting.h"
 
 vector<string> algorithm = {"selection-sort","insertion-sort","bubble-sort","radix-sort","flash-sort",
                             "heap-sort","shaker-sort","shell-sort","merge-sort","quick-sort","counting-sort"};
@@ -30,6 +30,9 @@ void genAndWrite(string filename,int n,int dataType) {
 	delete[] a;
 	fout.close();
 }
+
+
+
 
 
 

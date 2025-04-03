@@ -1,5 +1,5 @@
 // trình bày các thuật toán sort ở đây
-#include <sorting.h>
+#include "sorting.h"
 
 void copyArray(int a[], int b[], int n)
 {
@@ -49,7 +49,7 @@ void selection_sort(int a[], int n)
     }
 }
 
-// Funtion with comparisons counter
+// Funtion with comparison counter
 void selection_sort(int a[], int n, long long &comparisons)
 {
     for (int i = 0; ++comparisons && i < n - 1; i++)
@@ -179,7 +179,6 @@ void heapify(int a[], int n, int i)
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
-    // ++comparisons
     if (left < n && a[left] > a[largest])
     {
         largest = left;
@@ -213,7 +212,6 @@ void heapify(int a[], int n, int i, long long &comparisons)
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
-    // ++comparisons
     if (++comparisons && left < n && ++comparisons && a[left] > a[largest])
     {
         largest = left;
