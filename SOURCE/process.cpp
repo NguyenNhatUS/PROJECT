@@ -9,6 +9,7 @@ vector<string> output_parameters = {"-time","-cmp","-both"};
 
 vector<string> input_parameters = {"-rand","-sorted","-rsorted","-nsorted"};
 
+
 bool isNumber(string s) {
 	for(int i = 0;i < s.size();i++) {
 		if(s[i] > '9' || s[i] > '0') return false;
