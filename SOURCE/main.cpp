@@ -1,4 +1,3 @@
-// main: viết hàm main để chạy chương trình
 #include "sorting.h"
 #include "sorting.cpp"
 using namespace std;
@@ -42,11 +41,21 @@ void processArg(int argc, char *argv[])
     }
     fin.close();
     fout.close();
+    delete[] a;
 }
+
+// ./main -a selection-sort -i input.txt -o output.txt
 
 int main(int argc, char *argv[])
 {
-    string filename = argv[4];
+    string filename = "";
+    for(int i = 1;i < argc;i++) {
+        if(strcmp(argv[i],"-i") == 0) {
+            filename = argv[++i];
+            break;
+        }
+    }
+    
     GenerateArrayAndWrite(filename);
     processArg(argc, argv);
     return 0;

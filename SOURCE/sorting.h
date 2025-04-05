@@ -13,14 +13,8 @@
 #include<algorithm>
 #include<chrono>
 using namespace std;
-using namespace std::chrono;
 
-struct Record {
-    long long comparision;
-    double time;
-};
-
-// Original functions
+// Sort Algorithm
 void selection_sort(int a[], int n);
 void insertion_sort(int a[], int n);
 void bubble_sort(int a[], int n);

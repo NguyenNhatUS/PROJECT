@@ -1,4 +1,3 @@
-// trình bày các thuật toán sort ở đây
 #include "sorting.h"
 
 // Selection Sort
@@ -503,9 +502,6 @@ void CopyArr(int a[], int b[], int n)
         b[i] = a[i];
     }
 }
-
-vector<string> algorithm = {"selection-sort", "insertion-sort", "bubble-sort", "radix-sort", "flash-sort",
-                            "heap-sort", "shaker-sort", "shell-sort", "merge-sort", "quick-sort", "counting-sort"};
 
 void processSort(string Algo, int a[], int n)
 {
