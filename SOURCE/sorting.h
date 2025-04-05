@@ -21,8 +21,6 @@ struct Record {
     double time;
 };
 
-
-
 // Original functions
 void selection_sort(int a[], int n);
 void insertion_sort(int a[], int n);
