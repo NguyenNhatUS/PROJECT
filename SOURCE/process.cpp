@@ -4,7 +4,6 @@ vector<string> algorithm = {"selection-sort","insertion-sort","bubble-sort","rad
                             "heap-sort","shaker-sort","shell-sort","merge-sort","quick-sort","counting-sort"};
 
 
-						
 vector<string> output_parameters = {"-time","-cmp","-both"};
 
 vector<string> input_parameters = {"-rand","-sorted","-rsorted","-nsorted"};

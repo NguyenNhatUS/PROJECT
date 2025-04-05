@@ -15,7 +15,6 @@
 using namespace std;
 using namespace std::chrono;
 
-
 struct Record {
     long long comparision;
     double time;
@@ -33,19 +32,6 @@ void counting_sort(int a[], int n);
 void radix_sort(int a[], int n);
 void flash_sort(int a[], int n);
 void shaker_sort(int a[], int n);
-
-// Sort Algorithm with Comparision counter
-void selection_sort(int a[],int n,long long& comparisons);
-void insertion_sort(int a[],int n,long long& comparisons);
-void bubble_sort(int a[],int n,long long& comparisons);
-void shell_sort(int a[],int n,long long& comparisons);
-void heap_sort(int a[],int n,long long& comparisons);
-void merge_sort(int a[],int n,long long& comparisons);
-void quick_sort(int a[],int n,long long& comparisons);
-void counting_sort(int a[],int n,long long& comparisons);
-void radix_sort(int a[],int n,long long& comparisons);
-void flash_sort(int a[],int n,long long& comparisons);
-void shaker_sort(int a[],int n,long long& comparisons);
 
 // Data Generator
 void GenerateRandomData(int a[], int n);
