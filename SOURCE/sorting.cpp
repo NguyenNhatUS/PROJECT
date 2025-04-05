@@ -1,14 +1,6 @@
 // trình bày các thuật toán sort ở đây
 #include "sorting.h"
 
-void copyArray(int a[], int b[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        b[i] = a[i];
-    }
-}
-
 // Selection Sort
 // Original Functions
 void selection_sort(int a[], int n)
@@ -388,5 +380,177 @@ void shaker_sort(int a[], int n)
             }
         }
         left = k;
+    }
+}
+
+
+template <class T>
+void HoanVi(T &a, T &b)
+{
+    T x = a;
+    a = b;
+    b = x;
+}
+
+//-------------------------------------------------
+
+// Hàm phát sinh mảng dữ liệu ngẫu nhiên
+void GenerateRandomData(int a[], int n)
+{
+    srand((unsigned int)time(NULL));
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = rand() % n;
+    }
+}
+
+// Hàm phát sinh mảng dữ liệu có thứ tự tăng dần
+void GenerateSortedData(int a[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = i;
+    }
+}
+
+// Hàm phát sinh mảng dữ liệu có thứ tự ngược (giảm dần)
+void GenerateReverseData(int a[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = n - 1 - i;
+    }
+}
+
+// Hàm phát sinh mảng dữ liệu gần như có thứ tự
+void GenerateNearlySortedData(int a[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = i;
+    }
+    srand((unsigned int)time(NULL));
+    for (int i = 0; i < 10; i++)
+    {
+        int r1 = rand() % n;
+        int r2 = rand() % n;
+        HoanVi(a[r1], a[r2]);
+    }
+}
+
+void GenerateData(int a[], int n, int dataType)
+{
+    switch (dataType)
+    {
+    case 0: // ngẫu nhiên
+        GenerateRandomData(a, n);
+        break;
+    case 1: // có thứ tự
+        GenerateSortedData(a, n);
+        break;
+    case 2: // có thứ tự ngược
+        GenerateReverseData(a, n);
+        break;
+    case 3: // gần như có thứ tự
+        GenerateNearlySortedData(a, n);
+        break;
+    default:
+        cout << "Error: unknown data type!" << endl;
+    }
+    return;
+}
+
+int GenerateDataSize()
+{
+    srand(time(0));
+    int dataSize = rand() % 4;
+    switch (dataSize)
+    {
+    case 0:
+        return 10000;
+    case 1:
+        return 30000;
+    case 2:
+        return 50000;
+    case 3:
+        return 100000;
+    }
+    return 0;
+}
+
+void GenerateArrayAndWrite(string filename)
+{
+    ofstream fout;
+    fout.open(filename);
+    srand(time(0));
+    int dataType = rand() % 4;
+    int dataSize = GenerateDataSize();
+    int *a = new int[dataSize];
+    GenerateData(a, dataSize, dataType);
+    fout << dataSize << endl;
+    for (int i = 0; i < dataSize; i++)
+    {
+        fout << a[i] << " ";
+    }
+    fout.close();
+    delete[] a;
+}
+
+void CopyArr(int a[], int b[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        b[i] = a[i];
+    }
+}
+
+vector<string> algorithm = {"selection-sort", "insertion-sort", "bubble-sort", "radix-sort", "flash-sort",
+                            "heap-sort", "shaker-sort", "shell-sort", "merge-sort", "quick-sort", "counting-sort"};
+
+void processSort(string Algo, int a[], int n)
+{
+    if (Algo == "selection-sort")
+    {
+        selection_sort(a, n);
+    }
+    else if (Algo == "insertion-sort")
+    {
+        insertion_sort(a, n);
+    }
+    else if (Algo == "bubble-sort")
+    {
+        bubble_sort(a, n);
+    }
+    else if (Algo == "radix-sort")
+    {
+        radix_sort(a, n);
+    }
+    else if (Algo == "flash-sort")
+    {
+        flash_sort(a, n);
+    }
+    else if (Algo == "heap-sort")
+    {
+        heap_sort(a, n);
+    }
+    else if (Algo == "shaker-sort")
+    {
+        shaker_sort(a, n);
+    }
+    else if (Algo == "shell-sort")
+    {
+        shell_sort(a, n);
+    }
+    else if (Algo == "merge-sort")
+    {
+        merge_sort(a, n);
+    }
+    else if (Algo == "quick-sort")
+    {
+        quick_sort(a, n);
+    }
+    else if (Algo == "counting-sort")
+    {
+        counting_sort(a, n);
     }
 }
