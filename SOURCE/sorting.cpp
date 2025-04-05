@@ -37,12 +37,12 @@ void bubble_sort(int a[], int n)
 {
     bool swap = true;
     int temp;
-    for (int i = 0; swap; i++)
+    while(swap)
     {
         swap = false;
-        for (int j = 0; j < n - 1; j++)
+        for (int j = 0;  j < n - 1; j++)
         {
-            if (a[j] > a[j + 1])
+            if ( a[j] > a[j + 1])
             {
                 temp = a[j];
                 a[j] = a[j + 1];
