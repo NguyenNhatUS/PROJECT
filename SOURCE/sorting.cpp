@@ -4,14 +4,19 @@
 // Original Functions
 void selection_sort(int a[], int n)
 {
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0;  i < n - 1; i++)
     {
-        for (int j = i + 1; j < n; j++)
+      int index=i;
+        for (int j = i + 1;  j < n; j++)
         {
-            if (a[i] > a[j])
+            if (a[index] > a[j])
             {
-                swap(a[i], a[j]);
+                index=j;
             }
+        }if(index!=i){
+          int temp=a[index];
+          a[index]=a[i];
+          a[i]=temp;
         }
     }
 }
