@@ -14,6 +14,15 @@
 #include<chrono>
 using namespace std;
 
+//supportting
+void heapify(int a[], int n, int i);
+void merge(int a[], int left, int mid, int right);
+void MergeSort(int a[], int left, int right);
+int partition(int a[], int left, int right);
+void CountingSort(int arr[], int n, int mi, int mx);
+void Counting(int a[], int n, int exp);
+
+
 // Sort Algorithm
 void selection_sort(int a[], int n);
 void insertion_sort(int a[], int n);
