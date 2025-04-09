@@ -43,7 +43,7 @@ void processArg(int argc, char *argv[])
     fout.close();
     delete[] a;
 }
-
+// For example
 // ./main -a selection-sort -i input.txt -o output.txt
 
 int main(int argc, char *argv[])
@@ -55,7 +55,6 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    
     GenerateArrayAndWrite(filename);
     processArg(argc, argv);
     return 0;
