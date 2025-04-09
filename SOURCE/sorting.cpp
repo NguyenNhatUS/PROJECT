@@ -4,14 +4,19 @@
 // Original Functions
 void selection_sort(int a[], int n)
 {
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0;  i < n - 1; i++)
     {
-        for (int j = i + 1; j < n; j++)
+      int index=i;
+        for (int j = i + 1;  j < n; j++)
         {
-            if (a[i] > a[j])
+            if (a[index] > a[j])
             {
-                swap(a[i], a[j]);
+                index=j;
             }
+        }if(index!=i){
+          int temp=a[index];
+          a[index]=a[i];
+          a[i]=temp;
         }
     }
 }
@@ -192,23 +197,16 @@ void quick_sort(int a[], int n)
 void CountingSort(int arr[], int n, int mi, int mx)
 {
     int d = 0, cs = mx - mi;
-    int count[cs + 1];
-    for (int i = 0; i <= cs; i++)
-    {
-        count[i] = 0;
-    }
+    vector<int> count(cs + 1, 0);
     for (int i = 0; i < n; i++)
     {
         count[arr[i] - mi]++;
     }
     for (int i = 0; i <= cs; i++)
     {
-        if (count[i] > 0)
+        while(count[i]--)
         {
-            for (int j = 1; j <= count[i]; j++)
-            {
-                arr[d++] = i + mi;
-            }
+           arr[d++] = i + mi;
         }
     }
 }
@@ -251,45 +249,17 @@ void Counting(int a[], int n, int exp)
     }
 }
 
-void solve(int a[], int n)
+void radix_sort(int a[], int n, long long &comparisons)
 {
     int maxNum = a[0];
-    for (int i = 1; i < n; i++)
+    for (int i = 1; ++comparisons && i < n; i++)
     {
-        if (maxNum < a[i])
+        if (++comparisons && maxNum < a[i])
             maxNum = a[i];
     }
-    for (int exp = 1; maxNum / exp > 0; exp *= 10)
+    for (int exp = 1; ++comparisons && maxNum / exp > 0; exp *= 10)
     {
-        Counting(a, n, exp);
-    }
-}
-
-void radix_sort(int a[], int n)
-{
-    int list1[n];
-    int list2[n];
-    int count1 = 0, count2 = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] < 0)
-        {
-            list2[count2++] = -a[i];
-        }
-        else
-        {
-            list1[count1++] = a[i];
-        }
-    }
-    solve(list1, count1);
-    solve(list2, count2);
-    for (int i = 0; i < count2; i++)
-    {
-        a[i] = -list2[count2 - i - 1];
-    }
-    for (int i = 0; i < count1; i++)
-    {
-        a[i + count2] = list1[i];
+        Counting(a, n, exp, comparisons);
     }
 }
 

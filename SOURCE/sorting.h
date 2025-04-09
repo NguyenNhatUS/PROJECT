@@ -14,7 +14,7 @@
 #include<chrono>
 using namespace std;
 
-// Sorting Algorithm
+// Sort Algorithm
 void selection_sort(int a[], int n);
 void insertion_sort(int a[], int n);
 void bubble_sort(int a[], int n);
